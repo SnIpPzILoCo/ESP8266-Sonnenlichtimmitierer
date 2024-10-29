@@ -12,6 +12,7 @@
 <body>
     <h1>Sonnenlicht Immitierer</h1>
 
+    <!-- Temperature and Humidity -->
     <div class="temp-humidity-container">
         <div>
             <p><i class="fas fa-thermometer-half temperature-icon"></i> <span id="temperature">--</span> &deg;C</p>
@@ -21,20 +22,21 @@
         </div>
     </div>
 
-    <!-- Global On/Off switch in its own card -->
-    <div class="slider-card global-switch-card">
+    <h2>LED Kontrollen</h2>
+
+    <!-- Global On/Off Switch -->
+    <div class="slider-card slider-switch-card">
+        <h2>An/Ausschalter</h2>
         <div class="switch-container">
-            <h2>An/Ausschalter</h2>
-            <label class="switch">
-                <input type="checkbox" id="globalSwitch" checked>
+            <label class="switch slider-switch">
+                <input type="checkbox" id="sliderSwitch" checked>
                 <span class="slider"></span>
             </label>
         </div>
     </div>
 
-
     <div class="slider-container">
-        <!-- Red LED Card -->
+        <!-- Red LED -->
         <div class="slider-card">
             <div class="switch-container">
                 <label class="switch red-switch">
@@ -46,12 +48,13 @@
             <input type="range" min="0" max="255" value="0" class="range-slider" id="redLedSlider">
             <div class="slider-value-display" id="redLedDisplay">0</div>
             <div class="slider-group">
-                <input type="number" min="0" max="255" value="0" class="slider-value" id="redLedValue">
+                <input type="number" min="0" max="255" class="slider-value" id="redLedValue" placeholder="Value"
+                    onkeyup="validateInputMinMax(this)">
                 <button class="confirm-btn" id="redLedConfirm">Confirm</button>
             </div>
         </div>
 
-        <!-- Blue LED Card -->
+        <!-- Blue LED -->
         <div class="slider-card">
             <div class="switch-container">
                 <label class="switch blue-switch">
@@ -63,12 +66,13 @@
             <input type="range" min="0" max="255" value="0" class="range-slider" id="blueLedSlider">
             <div class="slider-value-display" id="blueLedDisplay">0</div>
             <div class="slider-group">
-                <input type="number" min="0" max="255" value="0" class="slider-value" id="blueLedValue">
+                <input type="number" min="0" max="255" class="slider-value" id="blueLedValue" placeholder="Value"
+                    onkeyup="validateInputMinMax(this)">
                 <button class="confirm-btn" id="blueLedConfirm">Confirm</button>
             </div>
         </div>
 
-        <!-- Warm LED Card -->
+        <!-- Warm LED -->
         <div class="slider-card">
             <div class="switch-container">
                 <label class="switch warm-switch">
@@ -80,12 +84,13 @@
             <input type="range" min="0" max="255" value="0" class="range-slider" id="warmLedSlider">
             <div class="slider-value-display" id="warmLedDisplay">0</div>
             <div class="slider-group">
-                <input type="number" min="0" max="255" value="0" class="slider-value" id="warmLedValue">
+                <input type="number" min="0" max="255" class="slider-value" id="warmLedValue" placeholder="Value"
+                    onkeyup="validateInputMinMax(this)">
                 <button class="confirm-btn" id="warmLedConfirm">Confirm</button>
             </div>
         </div>
 
-        <!-- Cool LED Card -->
+        <!-- Cold LED -->
         <div class="slider-card">
             <div class="switch-container">
                 <label class="switch cool-switch">
@@ -97,41 +102,201 @@
             <input type="range" min="0" max="255" value="0" class="range-slider" id="coolLedSlider">
             <div class="slider-value-display" id="coolLedDisplay">0</div>
             <div class="slider-group">
-                <input type="number" min="0" max="255" value="0" class="slider-value" id="coolLedValue">
+                <input type="number" min="0" max="255" class="slider-value" id="coolLedValue" placeholder="Value"
+                    onkeyup="validateInputMinMax(this)">
                 <button class="confirm-btn" id="coolLedConfirm">Confirm</button>
             </div>
         </div>
     </div>
 
-    <div class="relay-switches">
-        <h2>Relay Switches</h2>
-        <div class="relay-switches-container">
-            <div class="slider-card relay1-switch">
-                <h2>Relay 1</h2>
-                <label class="switch">
-                    <input type="checkbox" id="relay1Switch">
-                    <span class="slider"></span>
-                </label>
+    <h2>Relay Kontrollen</h2>
+    <div class="relay-switches-container">
+        <!-- Relay 1 Time Control -->
+        <div class="relay-card">
+            <h2>Relay 1</h2>
+            <div class="relay-time-input-container">
+                <div class="relay-time-input">
+                    <div class="time-group">
+                        <div>
+                            <h3>Start</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay1StartHours"
+                            placeholder="HH" onkeyup="validateInputMinMax(this)">
+                        <span>:</span>
+                        <input type="number" min="0" max="59" class="relay-time-minutes" id="relay1StartMinutes"
+                            placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                    <div class="time-group">
+                        <div>
+                            <h3>Ende</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay1EndHours"
+                            placeholder="HH" onkeyup="validateInputMinMax(this)">
+                        <span>:</span>
+                        <input type="number" min="0" max="59" class="relay-time-minutes" id="relay1EndMinutes"
+                            placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" id="relay1TimeConfirm">Confirm</button>
             </div>
-            <div class="slider-card relay2-switch">
-                <h2>Relay 2</h2>
-                <label class="switch">
-                    <input type="checkbox" id="relay2Switch">
-                    <span class="slider"></span>
-                </label>
+            <label class="switch">
+                <input type="checkbox" class="slider-toggle" id="relay1TimeSwitch">
+                <span class="slider"></span>
+            </label>
+            <div id="relay1Schedule">
+                <p>Scheduled Time: <span id="relay1TimeDisplay">Not Set</span></p>
+                <p>Status: <span id="relay1StatusDisplay">Off</span></p>
             </div>
-            <div class="slider-card relay3-switch">
-                <h2>Relay 3</h2>
-                <label class="switch">
-                    <input type="checkbox" id="relay3Switch">
-                    <span class="slider"></span>
-                </label>
+        </div>
+
+        <!-- Relay 2 Time Control -->
+        <div class="relay-card">
+            <h2>Relay 2</h2>
+            <div class="relay-time-input-container">
+                <div class="relay-time-input">
+                    <div class="time-group">
+                        <div>
+                            <h3>Start</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay2StartHours"
+                            placeholder="HH" onkeyup="validateInputMinMax(this)">
+                        <span>:</span>
+                        <input type="number" min="0" max="59" class="relay-time-minutes" id="relay2StartMinutes"
+                            placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                    <div class="time-group">
+                        <div>
+                            <h3>Ende</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay2EndHours"
+                            placeholder="HH" onkeyup="validateInputMinMax(this)">
+                        <span>:</span>
+                        <input type="number" min="0" max="59" class="relay-time-minutes" id="relay2EndMinutes"
+                            placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" id="relay2TimeConfirm">Confirm</button>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class="slider-toggle" id="relay2TimeSwitch">
+                <span class="slider"></span>
+            </label>
+            <div id="relay2Schedule">
+                <p>Scheduled Time: <span id="relay2TimeDisplay">Not Set</span></p>
+                <p>Status: <span id="relay2StatusDisplay">Off</span></p>
+            </div>
+        </div>
+
+        <!-- Relay 3 Time Control -->
+        <div class="relay-card">
+            <h2>Relay 3</h2>
+            <div class="relay-time-input-container">
+                <div class="relay-time-input">
+                    <div class="time-group">
+                        <div>
+                            <h3>Start</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay3StartHours"
+                            placeholder="HH" onkeyup="validateInputMinMax(this)">
+                        <span>:</span>
+                        <input type="number" min="0" max="59" class="relay-time-minutes" id="relay3StartMinutes"
+                            placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                    <div class="time-group">
+                        <div>
+                            <h3>Ende</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay3EndHours"
+                            placeholder="HH" onkeyup="validateInputMinMax(this)">
+                        <span>:</span>
+                        <input type="number" min="0" max="59" class="relay-time-minutes" id="relay3EndMinutes"
+                            placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" id="relay3TimeConfirm">Confirm</button>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class="slider-toggle" id="relay3TimeSwitch">
+                <span class="slider"></span>
+            </label>
+            <div id="relay3Schedule">
+                <p>Scheduled Time: <span id="relay3TimeDisplay">Not Set</span></p>
+                <p>Status: <span id="relay3StatusDisplay">Off</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!--Relay Switches -->
+    <div class="relay-switches-container">
+        <!-- Relay 1 -->
+        <div class="relay-card">
+            <h2>Relay 1 </h2>
+            <div class="timer-picker">
+                <div class="timer-text">
+                    <h3>Aus</h3>
+                </div>
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" class="slider-toggle" id="relay1Switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="timer-text">
+                    <h3>An</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Relay 2 -->
+        <div class="relay-card">
+            <h2>Relay 2</h2>
+            <div class="timer-picker">
+                <div class="timer-text">
+                    <h3>Aus</h3>
+                </div>
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" class="slider-toggle" id="relay2Switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="timer-text">
+                    <h3>An</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Relay 3 -->
+        <div class="relay-card">
+            <h2>Relay 3</h2>
+            <div class="timer-picker">
+                <div class="timer-text">
+                    <h3>Aus</h3>
+                </div>
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" class="slider-toggle" id="relay3Switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="timer-text">
+                    <h3>An</h3>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 
 </html>
