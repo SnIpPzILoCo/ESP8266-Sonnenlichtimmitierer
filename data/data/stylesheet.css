@@ -1,0 +1,363 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #D2D2D2;
+}
+
+body {
+    background-color: #0C0C0C;
+    margin: auto;
+    width: 75%;
+    padding: 20px;
+}
+
+h1 {
+    color: #FFFFFF;
+}
+
+h2 {
+    color: #f1f1f1;
+    font-size: 1.2em;
+}
+
+h3 {
+    margin: 0;
+}
+
+.relay-time-hours,
+.relay-time-minutes {
+    margin: 5px;
+}
+
+.slider-switch-card {
+    margin: 20px auto;
+    width: 150px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-switch-card h2 {
+    margin: 0 0 10px 0;
+}
+
+.switch-container {
+    width: auto;
+    /* No fixed width for the switch, so it centers properly */
+    display: flex;
+    justify-content: center;
+    /* Center the switch itself */
+}
+
+.temp-humidity-container {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    gap: 40px;
+}
+
+.temp-humidity-container .temperature-icon,
+.temp-humidity-container .humidity-icon {
+    font-size: 1.5em;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.temp-humidity-container .temperature-icon {
+    color: #FF6F61;
+}
+
+.temp-humidity-container .humidity-icon {
+    color: #4DA8DA;
+}
+
+.temp-humidity-container span {
+    color: #FFFFFF;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.slider-container,
+.relay-switches-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin: 0 auto 40px auto;
+}
+
+@media (min-width: 768px) {
+    .slider-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .relay-switches-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .slider-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .relay-switches-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.slider-card,
+.relay-card {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 10px;
+    background: #d9d9d9;
+    outline: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #333;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.range-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #333;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#redLedSlider {
+    background: linear-gradient(to right, transparent, #b80606);
+}
+
+#blueLedSlider {
+    background: linear-gradient(to right, transparent, #0758d1);
+}
+
+#warmLedSlider {
+    background: linear-gradient(to right, transparent, #ffcc66);
+}
+
+#coolLedSlider {
+    background: linear-gradient(to right, transparent, #a6e3ff);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+/* Switch colors */
+.red-switch .slider {
+    background-color: #4c4c4c;
+}
+
+.red-switch input:checked+.slider {
+    background-color: #b80606;
+}
+
+.blue-switch .slider {
+    background-color: #4c4c4c;
+}
+
+.blue-switch input:checked+.slider {
+    background-color: #0758d1;
+}
+
+.warm-switch .slider {
+    background-color: #4c4c4c;
+}
+
+.warm-switch input:checked+.slider {
+    background-color: #ffcc66;
+}
+
+.cool-switch .slider {
+    background-color: #4c4c4c;
+}
+
+.cool-switch input:checked+.slider {
+    background-color: #a6e3ff;
+}
+
+/* Input field styles (number inputs only) */
+input[type="number"] {
+    width: 70px;
+    padding: 5px;
+    text-align: center;
+    background-color: #333;
+    /* Background for input fields */
+    color: #f1f1f1;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #2196F3;
+    /* Blue border on focus */
+    background-color: #444;
+    /* Slightly darker background on focus */
+}
+
+.relay-time-input input[type="number"] {
+    width: 35px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.slider-value-display {
+    color: white;
+    font-size: 1.5em;
+    margin: 8px 0;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    background: none;
+    padding: 0;
+    width: auto;
+    box-shadow: none;
+}
+
+.confirm-btn {
+    width: 80px;
+    padding: 5px;
+    font-size: 1em;
+    color: white;
+    text-align: center;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-btn:hover {
+    background-color: #45a049;
+}
+
+/* Relay Input styles */
+.relay-time-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.relay-time-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.time-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+/* Hide number spinners in Chrome and Firefox */
+.relay-time-input input::-webkit-outer-spin-button,
+.relay-time-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.relay-time-input input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.timer-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-text {
+    width: 50px;
+    /* Equal width for "Aus" and "An" containers */
+    text-align: center;
+    /* Ensure the text is centered inside its container */
+}
+
+.confirmed {
+    background-color: #4CAF50;
+    color: white;
+    transition: all 0.3s ease;
+}

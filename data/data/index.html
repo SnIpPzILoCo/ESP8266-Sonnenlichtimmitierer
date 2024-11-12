@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonnenlicht Immitierer</title>
+</head>
+
+<body>
+    <h1>Sonnenlicht Immitierer</h1>
+    <h2>Relay Kontrollen</h2>
+    <div class="relay-switches-container">
+        <!-- Relay 1 Time Control -->
+        <div class="relay-card">
+            <h2>Relay 1</h2>
+            <div class="relay-time-input-container">
+                <div class="relay-time-input">
+                    <div class="time-group">
+                        <div>
+                            <h3>Start</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay1StartHours"
+                                placeholder="HH" onkeyup="validateInputMinMax(this)">
+                            <span>:</span>
+                            <input type="number" min="0" max="59" class="relay-time-minutes" id="relay1StartMinutes"
+                                placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                    <div class="time-group">
+                        <div>
+                            <h3>Ende</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay1EndHours"
+                                placeholder="HH" onkeyup="validateInputMinMax(this)">
+                            <span>:</span>
+                            <input type="number" min="0" max="59" class="relay-time-minutes" id="relay1EndMinutes"
+                                placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" id="relay1TimeConfirm">Confirm</button>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class="slider-toggle" id="relay1TimeSwitch">
+                <span class="slider"></span>
+            </label>
+            <div id="relay1Schedule">
+                <p>Scheduled Time: <span id="relay1TimeDisplay">Not Set</span></p>
+                <p>Status: <span id="relay1StatusDisplay">Off</span></p>
+            </div>
+        </div>
+
+        <!-- Relay 2 Time Control -->
+        <div class="relay-card">
+            <h2>Relay 2</h2>
+            <div class="relay-time-input-container">
+                <div class="relay-time-input">
+                    <div class="time-group">
+                        <div>
+                            <h3>Start</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay2StartHours"
+                                placeholder="HH" onkeyup="validateInputMinMax(this)">
+                            <span>:</span>
+                            <input type="number" min="0" max="59" class="relay-time-minutes" id="relay2StartMinutes"
+                                placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                    <div class="time-group">
+                        <div>
+                            <h3>Ende</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay2EndHours"
+                                placeholder="HH" onkeyup="validateInputMinMax(this)">
+                            <span>:</span>
+                            <input type="number" min="0" max="59" class="relay-time-minutes" id="relay2EndMinutes"
+                                placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" id="relay2TimeConfirm">Confirm</button>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class="slider-toggle" id="relay2TimeSwitch">
+                <span class="slider"></span>
+            </label>
+            <div id="relay2Schedule">
+                <p>Scheduled Time: <span id="relay2TimeDisplay">Not Set</span></p>
+                <p>Status: <span id="relay2StatusDisplay">Off</span></p>
+            </div>
+        </div>
+
+        <!-- Relay 3 Time Control -->
+        <div class="relay-card">
+            <h2>Relay 3</h2>
+            <div class="relay-time-input-container">
+                <div class="relay-time-input">
+                    <div class="time-group">
+                        <div>
+                            <h3>Start</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay3StartHours"
+                                placeholder="HH" onkeyup="validateInputMinMax(this)">
+                            <span>:</span>
+                            <input type="number" min="0" max="59" class="relay-time-minutes" id="relay3StartMinutes"
+                                placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                    <div class="time-group">
+                        <div>
+                            <h3>Ende</h3>
+                        </div>
+                        <div>
+                            <input type="number" min="0" max="23" class="relay-time-hours" id="relay3EndHours"
+                                placeholder="HH" onkeyup="validateInputMinMax(this)">
+                            <span>:</span>
+                            <input type="number" min="0" max="59" class="relay-time-minutes" id="relay3EndMinutes"
+                                placeholder="MM" onkeyup="validateInputMinMax(this)">
+                        </div>
+                    </div>
+                </div>
+                <button class="confirm-btn" id="relay3TimeConfirm">Confirm</button>
+            </div>
+            <label class="switch">
+                <input type="checkbox" class="slider-toggle" id="relay3TimeSwitch">
+                <span class="slider"></span>
+            </label>
+            <div id="relay3Schedule">
+                <p>Scheduled Time: <span id="relay3TimeDisplay">Not Set</span></p>
+                <p>Status: <span id="relay3StatusDisplay">Off</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!--Relay Switches -->
+    <div class="relay-switches-container">
+        <!-- Relay 1 -->
+        <div class="relay-card">
+            <h2>Relay 1 </h2>
+            <div class="timer-picker">
+                <div class="timer-text">
+                    <h3>Aus</h3>
+                </div>
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" class="slider-toggle" id="relay1Switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="timer-text">
+                    <h3>An</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Relay 2 -->
+        <div class="relay-card">
+            <h2>Relay 2</h2>
+            <div class="timer-picker">
+                <div class="timer-text">
+                    <h3>Aus</h3>
+                </div>
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" class="slider-toggle" id="relay2Switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="timer-text">
+                    <h3>An</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Relay 3 -->
+        <div class="relay-card">
+            <h2>Relay 3</h2>
+            <div class="timer-picker">
+                <div class="timer-text">
+                    <h3>Aus</h3>
+                </div>
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" class="slider-toggle" id="relay3Switch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="timer-text">
+                    <h3>An</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
