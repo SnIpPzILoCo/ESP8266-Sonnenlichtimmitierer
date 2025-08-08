@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonnenlicht Immitierer</title>
+</head>
+
+<body>
+    <h1>Sonnenlicht Immitierer</h1>
+
+    <div class="temp-humidity-container">
+        <div>
+            <p><i class="fas fa-thermometer-half temperature-icon"></i> <span id="temperature">--</span> &deg;C</p>
+        </div>
+        <div>
+            <p><i class="fas fa-tint humidity-icon"></i> <span id="humidity">--</span> %</p>
+        </div>
+    </div>
+
+    <!-- Global On/Off switch in its own card -->
+    <div class="slider-card global-switch-card">
+        <div class="switch-container">
+            <h2>An/Ausschalter</h2>
+            <label class="switch">
+                <input type="checkbox" id="globalSwitch" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+
+    <div class="slider-container">
+        <!-- Red LED Card -->
+        <div class="slider-card">
+            <div class="switch-container">
+                <label class="switch red-switch">
+                    <input type="checkbox" class="slider-toggle" id="redLedSwitch" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <h2>Rote LED</h2>
+            <input type="range" min="0" max="255" value="0" class="range-slider" id="redLedSlider">
+            <div class="slider-value-display" id="redLedDisplay">0</div>
+            <div class="slider-group">
+                <input type="number" min="0" max="255" value="0" class="slider-value" id="redLedValue">
+                <button class="confirm-btn" id="redLedConfirm">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Blue LED Card -->
+        <div class="slider-card">
+            <div class="switch-container">
+                <label class="switch blue-switch">
+                    <input type="checkbox" class="slider-toggle" id="blueLedSwitch" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <h2>Blaue LED</h2>
+            <input type="range" min="0" max="255" value="0" class="range-slider" id="blueLedSlider">
+            <div class="slider-value-display" id="blueLedDisplay">0</div>
+            <div class="slider-group">
+                <input type="number" min="0" max="255" value="0" class="slider-value" id="blueLedValue">
+                <button class="confirm-btn" id="blueLedConfirm">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Warm LED Card -->
+        <div class="slider-card">
+            <div class="switch-container">
+                <label class="switch warm-switch">
+                    <input type="checkbox" class="slider-toggle" id="warmLedSwitch" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <h2>Warme Led</h2>
+            <input type="range" min="0" max="255" value="0" class="range-slider" id="warmLedSlider">
+            <div class="slider-value-display" id="warmLedDisplay">0</div>
+            <div class="slider-group">
+                <input type="number" min="0" max="255" value="0" class="slider-value" id="warmLedValue">
+                <button class="confirm-btn" id="warmLedConfirm">Confirm</button>
+            </div>
+        </div>
+
+        <!-- Cool LED Card -->
+        <div class="slider-card">
+            <div class="switch-container">
+                <label class="switch cool-switch">
+                    <input type="checkbox" class="slider-toggle" id="coolLedSwitch" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <h2>Kalte Led</h2>
+            <input type="range" min="0" max="255" value="0" class="range-slider" id="coolLedSlider">
+            <div class="slider-value-display" id="coolLedDisplay">0</div>
+            <div class="slider-group">
+                <input type="number" min="0" max="255" value="0" class="slider-value" id="coolLedValue">
+                <button class="confirm-btn" id="coolLedConfirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="relay-switches">
+        <h2>Relay Switches</h2>
+        <div class="relay-switches-container">
+            <div class="slider-card relay1-switch">
+                <h2>Relay 1</h2>
+                <label class="switch">
+                    <input type="checkbox" id="relay1Switch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="slider-card relay2-switch">
+                <h2>Relay 2</h2>
+                <label class="switch">
+                    <input type="checkbox" id="relay2Switch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="slider-card relay3-switch">
+                <h2>Relay 3</h2>
+                <label class="switch">
+                    <input type="checkbox" id="relay3Switch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+
+</html>

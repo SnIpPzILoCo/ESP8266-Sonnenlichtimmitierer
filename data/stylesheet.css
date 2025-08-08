@@ -1,0 +1,326 @@
+/* Global Styling */
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #D2D2D2;
+}
+
+body {
+  background-color: #0C0C0C;
+  margin: auto;
+  width: 75%;
+  padding: 20px;
+}
+
+h1 {
+  color: #FFFFFF;
+  margin-bottom: 30px;
+}
+
+/* Temperature and Humidity Container */
+.temp-humidity-container {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.temp-humidity-container .temperature-icon {
+  color: #FF6F61;
+  font-size: 1.5em;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.temp-humidity-container .humidity-icon {
+  color: #4DA8DA;
+  font-size: 1.5em;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.temp-humidity-container span {
+  color: #FFFFFF;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Slider Container */
+.slider-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin: 0 auto 40px auto;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .slider-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .slider-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Slider Card */
+.slider-card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-card h2 {
+  margin-bottom: 15px;
+  color: #f1f1f1;
+  font-size: 1.2em;
+}
+
+/* Range Slider Styling */
+.range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 10px;
+  background: #d9d9d9;
+  outline: none;
+}
+
+.range-slider::-webkit-slider-thumb,
+.range-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #333;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Individual Slider Styles */
+#redLedSlider {
+  background: linear-gradient(to right, transparent, #b80606);
+}
+
+#blueLedSlider {
+  background: linear-gradient(to right, transparent, #0758d1);
+}
+
+#warmLedSlider {
+  background: linear-gradient(to right, transparent, #ffcc66);
+}
+
+#coolLedSlider {
+  background: linear-gradient(to right, transparent, #a6e3ff);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+  transform: translateX(20px);
+}
+
+/* Red Switch */
+.red-switch .slider {
+  background-color: #4c4c4c;
+}
+
+.red-switch input:checked+.slider {
+  background-color: #b80606;
+}
+
+/* Blue Switch */
+.blue-switch .slider {
+  background-color: #4c4c4c;
+}
+
+.blue-switch input:checked+.slider {
+  background-color: #0758d1;
+}
+
+/* Warm Switch */
+.warm-switch .slider {
+  background-color: #4c4c4c;
+}
+
+.warm-switch input:checked+.slider {
+  background-color: #ffcc66;
+}
+
+/* Cool Switch */
+.cool-switch .slider {
+  background-color: #4c4c4c;
+}
+
+.cool-switch input:checked+.slider {
+  background-color: #a6e3ff;
+}
+
+/* Slider Value Styling */
+.slider-value {
+  width: 70px;
+  padding: 5px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.slider-value:focus {
+  outline: none;
+  background-color: #444;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Slider Value Display */
+.slider-value-display {
+  color: white;
+  font-size: 1.5em;
+  margin: 8px 0;
+  text-align: center;
+  font-weight: bold;
+  border: none;
+  background: none;
+  padding: 0;
+  width: auto;
+  box-shadow: none;
+}
+
+/* Confirm Button */
+.confirm-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-btn:hover {
+  background-color: #45a049;
+}
+
+/* Global Switch Card */
+.global-switch-card {
+  margin: 20px auto;
+  width: 200px;
+  padding: 10px;
+}
+
+.global-switch-card .slider {
+  background-color: #ccc;
+}
+
+/* Relay Switches */
+.relay-switches-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.relay1-switch .slider {
+  background-color: #ff5733;
+}
+
+.relay1-switch input:checked+.slider {
+  background-color: #ff7b59;
+}
+
+.relay2-switch .slider {
+  background-color: #33b5ff;
+}
+
+.relay2-switch input:checked+.slider {
+  background-color: #66ccff;
+}
+
+.relay3-switch .slider {
+  background-color: #33ff57;
+}
+
+.relay3-switch input:checked+.slider {
+  background-color: #66ff85;
+}
+
+/* Mozilla Fix */
+@-moz-document url-prefix() {
+  .switch {
+    width: 40px;
+    height: 20px;
+  }
+
+  .slider:before {
+    height: 16px;
+    width: 16px;
+  }
+
+  input:checked+.slider:before {
+    transform: translateX(20px);
+  }
+}
